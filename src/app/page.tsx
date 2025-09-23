@@ -290,8 +290,8 @@ export default function Page() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center space-x-2 mb-4 md:mb-0">
-              <div className="w-6 h-6 bg-gradient-to-br from-slate-400 to-slate-600 rounded flex items-center justify-center">
-                <BulbSproutIcon className="[&>svg]:h-4 [&>svg]:w-4" />
+              <div className="w-8 h-8 bg-gradient-to-br from-slate-600 to-slate-800 rounded-lg flex items-center justify-center">
+                <BulbSproutIcon />
               </div>
               <span className="text-xl text-white">gatorinnovation</span>
             </div>
