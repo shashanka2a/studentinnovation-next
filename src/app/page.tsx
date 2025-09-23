@@ -1,7 +1,6 @@
 "use client"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { ImageWithFallback } from "@/components/figma/ImageWithFallback";
 import { motion } from "motion/react";
 import { ArrowRight, Code, Smartphone, Palette, Users, Star, Mail, Phone, MapPin, Zap } from "lucide-react";
@@ -32,12 +31,6 @@ export default function Page() {
 
   const caseStudies = [
     {
-      title: "Vybr",
-      category: "Housing Platform",
-      description: "Discover your dream housing",
-      image: "/Vybr.png",
-    },
-    {
       title: "GatorEx",
       category: "Marketplace",
       description: "Marketplace for UF students",
@@ -48,6 +41,12 @@ export default function Page() {
       category: "Ride Sharing",
       description: "Split ride costs effortlessly",
       image: "/Rydify.png",
+    },
+    {
+      title: "Vybr",
+      category: "Housing Platform",
+      description: "Discover your dream housing",
+      image: "/Vybr.png",
     },
   ];
 
@@ -72,29 +71,7 @@ export default function Page() {
     }
   ];
 
-  const moreProjects = [
-    {
-      emoji: "🏠",
-      title: "Vybr",
-      subtitle: "Discover your dream housing",
-      tech: ["React", "Next.js", "Firebase"],
-      href: "https://vybr.vercel.app",
-    },
-    {
-      emoji: "🐊",
-      title: "GatorEx",
-      subtitle: "Marketplace for UF students",
-      tech: ["Supabase", "React", "Tailwind"],
-      href: "https://gatorex.co",
-    },
-    {
-      emoji: "🚗",
-      title: "Rydify",
-      subtitle: "Split ride costs effortlessly",
-      tech: ["React Native", "Firebase"],
-      href: "https://rydify.co",
-    },
-  ];
+  
 
   return (
     <div className="min-h-screen bg-white">
@@ -141,8 +118,8 @@ export default function Page() {
         </div>
       </section>
 
-      {/* More Projects Section */}
-      <section className="py-20">
+      {/* Our Work (moved here) */}
+      <section id="case-studies" className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -151,42 +128,36 @@ export default function Page() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl mb-6 text-black">More Projects from Our Team</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Real products we’ve shipped recently — matching the same high quality and attention to detail.
-            </p>
+            <h2 className="text-3xl md:text-4xl mb-6 text-black">Our Work</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">Real projects that showcase our commitment to student innovation and entrepreneurship.</p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {moreProjects.map((project, index) => (
+            {caseStudies.map((study, index) => (
               <motion.div
-                key={project.title}
+                key={study.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.05 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <Card className="h-full hover:shadow-lg transition-shadow">
+                <Card className="h-full hover:shadow-lg transition-shadow overflow-hidden">
+                  <div className="aspect-video overflow-hidden">
+                    <ImageWithFallback
+                      src={study.image}
+                      alt={study.title}
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
                   <CardHeader>
-                    <div className="flex items-center gap-3 mb-2">
-                      <div className="w-8 h-8 rounded-md bg-slate-100 flex items-center justify-center text-base">
-                        <span>{project.emoji}</span>
-                      </div>
-                      <CardTitle className="text-xl text-black">{project.title}</CardTitle>
-                    </div>
-                    <CardDescription className="text-gray-600">
-                      {project.subtitle}
-                    </CardDescription>
+                    <div className="text-sm text-slate-600 mb-2">{study.category}</div>
+                    <CardTitle className="text-xl text-black">{study.title}</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="flex flex-wrap gap-2 mt-2">
-                      {project.tech.map((t) => (
-                        <Badge key={t} variant="outline">{t}</Badge>
-                      ))}
-                    </div>
+                    <CardDescription className="text-gray-600">{study.description}</CardDescription>
                     <div className="border-t mt-6 pt-4">
                       <a
-                        href={project.href}
+                        href={study.title === "Vybr" ? "https://vybr.vercel.app" : study.title === "GatorEx" ? "https://gatorex.co" : "https://rydify.co"}
                         target="_blank"
                         rel="noreferrer noopener"
                         className="text-slate-700 hover:text-black inline-flex items-center gap-2"
@@ -267,54 +238,7 @@ export default function Page() {
         </div>
       </section>
 
-      {/* Case Studies Section */}
-      <section id="case-studies" className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl mb-6 text-black">Our Work</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Real projects that showcase our commitment to student innovation and entrepreneurship.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {caseStudies.map((study, index) => (
-              <motion.div
-                key={study.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <Card className="h-full hover:shadow-lg transition-shadow overflow-hidden">
-                  <div className="aspect-video overflow-hidden">
-                    <ImageWithFallback 
-                      src={study.image}
-                      alt={study.title}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                  <CardHeader>
-                    <div className="text-sm text-slate-600 mb-2">{study.category}</div>
-                    <CardTitle className="text-xl text-black">{study.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <CardDescription className="text-gray-600">
-                      {study.description}
-                    </CardDescription>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      
 
       {/* Testimonials Section */}
       <section className="py-20">
