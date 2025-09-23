@@ -78,7 +78,10 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/GatorEx.png", type: "image/png" },
+      { url: "/favicon.ico" },
+    ],
   },
   category: "technology",
 };

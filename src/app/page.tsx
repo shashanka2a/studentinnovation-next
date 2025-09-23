@@ -105,13 +105,13 @@ export default function Page() {
             className="text-center"
           >
             <h1 className="text-4xl md:text-6xl lg:text-7xl mb-6 text-black max-w-4xl mx-auto leading-tight">
-              We Build Digital Solutions for <span className="text-slate-600">Student Entrepreneurs</span>
+              Build your MVP fast
             </h1>
             <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-              Empowering student entrepreneurs and innovators with cutting-edge web and mobile applications that turn ideas into reality.
+              Websites, mobile apps, and brands for student founders. Simple scope, quick delivery, great UX.
             </p>
             <Button size="lg" className="bg-black hover:bg-gray-800 text-white px-8 py-3 text-lg">
-              Start Your Project
+              Start your project
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </motion.div>
@@ -160,7 +160,7 @@ export default function Page() {
                         href={study.title === "Vybr" ? "https://vybr.vercel.app" : study.title === "GatorEx" ? "https://gatorex.co" : "https://rydify.co"}
                         target="_blank"
                         rel="noreferrer noopener"
-                        className="text-slate-700 hover:text-black inline-flex items-center gap-2"
+                        className="inline-flex items-center gap-2 bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800"
                       >
                         View Live Project <ArrowRight className="h-4 w-4" />
                       </a>
@@ -240,50 +240,7 @@ export default function Page() {
 
       
 
-      {/* Testimonials Section */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl mb-6 text-black">What People Say</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Don&#39;t just take our word for it - hear from our satisfied clients and partners.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <motion.div
-                key={testimonial.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <Card className="h-full">
-                  <CardContent className="pt-6">
-                    <div className="flex mb-4">
-                      {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="h-5 w-5 fill-slate-400 text-slate-400" />
-                      ))}
-                    </div>
-                    <p className="text-gray-600 mb-6 italic">&ldquo;{testimonial.content}&rdquo;</p>
-                    <div>
-                      <div className="text-black">{testimonial.name}</div>
-                      <div className="text-sm text-gray-500">{testimonial.role}</div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Testimonials temporarily removed for MVP */}
 
       {/* Contact CTA Section */}
       <section id="contact" className="py-20 bg-black text-white">
