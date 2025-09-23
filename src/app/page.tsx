@@ -1,6 +1,7 @@
 "use client"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { ImageWithFallback } from "@/components/figma/ImageWithFallback";
 import { motion } from "motion/react";
 import { ArrowRight, Code, Smartphone, Palette, Users, Star, Mail, Phone, MapPin, Zap } from "lucide-react";
@@ -31,23 +32,23 @@ export default function Page() {
 
   const caseStudies = [
     {
-      title: "EduFlow",
-      category: "Student Startup",
-      description: "Course scheduling platform helping students optimize their academic planning and workload management.",
-      image: "https://images.unsplash.com/photo-1732115234692-3ee71d5363af?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx1bml2ZXJzaXR5JTIwc3R1ZGVudHMlMjB0ZWNobm9sb2d5fGVufDF8fHx8MTc1ODU3MzA2NHww&ixlib=rb-4.1.0&q=80&w=1080"
+      title: "Vybr",
+      category: "Housing Platform",
+      description: "Discover your dream housing",
+      image: "/Vybr.png",
     },
     {
-      title: "CampusConnect",
-      category: "Mobile App",
-      description: "Student community platform connecting peers with real-time updates and social features.",
-      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2JpbGUlMjBhcHAlMjBkZXZlbG9wbWVudHxlbnwxfHx8fDE3NTg1ODU3OTB8MA&ixlib=rb-4.1.0&q=80&w=1080"
+      title: "GatorEx",
+      category: "Marketplace",
+      description: "Marketplace for UF students",
+      image: "/GatorEx.png",
     },
     {
-      title: "ResearchHub",
-      category: "Web Platform",
-      description: "Collaborative research platform streamlining academic partnerships and project management.",
-      image: "https://images.unsplash.com/photo-1603985585179-3d71c35a537c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3ZWIlMjBkZXNpZ24lMjB3b3Jrc3BhY2V8ZW58MXx8fHwxNzU4NjE3OTMwfDA&ixlib=rb-4.1.0&q=80&w=1080"
-    }
+      title: "Rydify",
+      category: "Ride Sharing",
+      description: "Split ride costs effortlessly",
+      image: "/Rydify.png",
+    },
   ];
 
   const testimonials = [
@@ -69,6 +70,30 @@ export default function Page() {
       content: "They helped bring our business plan to life with an amazing mobile app. The user experience is seamless and our customers love it.",
       rating: 5
     }
+  ];
+
+  const moreProjects = [
+    {
+      emoji: "🏠",
+      title: "Vybr",
+      subtitle: "Discover your dream housing",
+      tech: ["React", "Next.js", "Firebase"],
+      href: "https://vybr.vercel.app",
+    },
+    {
+      emoji: "🐊",
+      title: "GatorEx",
+      subtitle: "Marketplace for UF students",
+      tech: ["Supabase", "React", "Tailwind"],
+      href: "https://gatorex.co",
+    },
+    {
+      emoji: "🚗",
+      title: "Rydify",
+      subtitle: "Split ride costs effortlessly",
+      tech: ["React Native", "Firebase"],
+      href: "https://rydify.co",
+    },
   ];
 
   return (
@@ -113,6 +138,67 @@ export default function Page() {
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </motion.div>
+        </div>
+      </section>
+
+      {/* More Projects Section */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl mb-6 text-black">More Projects from Our Team</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Real products we’ve shipped recently — matching the same high quality and attention to detail.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {moreProjects.map((project, index) => (
+              <motion.div
+                key={project.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.05 }}
+                viewport={{ once: true }}
+              >
+                <Card className="h-full hover:shadow-lg transition-shadow">
+                  <CardHeader>
+                    <div className="flex items-center gap-3 mb-2">
+                      <div className="w-8 h-8 rounded-md bg-slate-100 flex items-center justify-center text-base">
+                        <span>{project.emoji}</span>
+                      </div>
+                      <CardTitle className="text-xl text-black">{project.title}</CardTitle>
+                    </div>
+                    <CardDescription className="text-gray-600">
+                      {project.subtitle}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="flex flex-wrap gap-2 mt-2">
+                      {project.tech.map((t) => (
+                        <Badge key={t} variant="outline">{t}</Badge>
+                      ))}
+                    </div>
+                    <div className="border-t mt-6 pt-4">
+                      <a
+                        href={project.href}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        className="text-slate-700 hover:text-black inline-flex items-center gap-2"
+                      >
+                        View Live Project <ArrowRight className="h-4 w-4" />
+                      </a>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
