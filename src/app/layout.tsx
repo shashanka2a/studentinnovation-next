@@ -79,7 +79,7 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/GatorEx.png", type: "image/png" },
+      { url: "/favicon-bulb.svg", type: "image/svg+xml" },
       { url: "/favicon.ico" },
     ],
   },
