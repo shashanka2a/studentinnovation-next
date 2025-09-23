@@ -54,7 +54,7 @@ export default function Page() {
     {
       name: "Sarah Martinez",
       role: "Founder, EcoTech Solutions",
-      content: "StudentInnovation transformed our sustainability startup idea into a fully functional platform. Their expertise in both design and development was invaluable.",
+      content: "gatorinnovation transformed our sustainability startup idea into a fully functional platform. Their expertise in both design and development was invaluable.",
       rating: 5
     },
     {
@@ -81,7 +81,7 @@ export default function Page() {
               <div className="w-8 h-8 bg-gradient-to-br from-slate-600 to-slate-800 rounded-lg flex items-center justify-center">
                 <Zap className="h-5 w-5 text-white" />
               </div>
-              <span className="text-xl text-black font-semibold">StudentInnovation</span>
+              <span className="text-xl text-black font-semibold">gatorinnovation</span>
             </div>
             <div className="hidden md:flex space-x-8">
               <a href="#about" className="text-gray-700 hover:text-black transition-colors">About</a>
@@ -128,7 +128,7 @@ export default function Page() {
           >
             <h2 className="text-3xl md:text-4xl mb-6 text-black">Our Mission</h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              StudentInnovation bridges the gap between academic excellence and real-world application. 
+              gatorinnovation bridges the gap between academic excellence and real-world application. 
               We&#39;re a student-led organization dedicated to creating digital solutions that support 
               student entrepreneurship, foster innovation, and bring ambitious ideas to life. 
               Our team combines cutting-edge technology with deep understanding of the student entrepreneur&#39;s journey.
@@ -306,7 +306,7 @@ export default function Page() {
                 <Mail className="h-5 w-5 text-slate-400" />
                 <div>
                   <div className="text-sm text-gray-400">Email</div>
-                  <div>hello@studentinnovation.com</div>
+                  <div>hello@gatorinnovation.com</div>
                 </div>
               </div>
               <div className="flex items-center space-x-3">
@@ -336,10 +336,10 @@ export default function Page() {
               <div className="w-6 h-6 bg-gradient-to-br from-slate-400 to-slate-600 rounded flex items-center justify-center">
                 <Zap className="h-4 w-4 text-white" />
               </div>
-              <span className="text-xl text-white">StudentInnovation</span>
+              <span className="text-xl text-white">gatorinnovation</span>
             </div>
             <div className="text-center md:text-right">
-              <p>&copy; 2024 StudentInnovation. All rights reserved.</p>
+              <p>&copy; 2024 gatorinnovation. All rights reserved.</p>
               <p className="text-sm mt-1">Empowering student entrepreneurs worldwide</p>
             </div>
           </div>

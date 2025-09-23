@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "StudentInnovation - Digital Solutions for Student Entrepreneurs",
+  title: "gatorinnovation - Digital Solutions for Student Entrepreneurs",
   description:
-    "StudentInnovation empowers student entrepreneurs with cutting-edge web and mobile applications. We turn innovative ideas into reality through expert design and development.",
+    "gatorinnovation empowers student entrepreneurs with cutting-edge web and mobile applications. We turn innovative ideas into reality through expert design and development.",
 };
 
 export default function RootLayout({
