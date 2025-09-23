@@ -3,7 +3,16 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { ImageWithFallback } from "@/components/figma/ImageWithFallback";
 import { motion } from "motion/react";
-import { ArrowRight, Code, Smartphone, Palette, Users, Star, Mail, Phone, MapPin, Zap } from "lucide-react";
+import { ArrowRight, Code, Smartphone, Palette, Users, Mail, Phone, MapPin, Lightbulb, Sprout } from "lucide-react";
+
+function BulbSproutIcon({ className = "" }: { className?: string }) {
+  return (
+    <span className={`relative inline-flex items-center justify-center ${className}`}>
+      <Lightbulb className="h-5 w-5 text-white" />
+      <Sprout className="h-3 w-3 text-emerald-300 absolute" />
+    </span>
+  );
+}
 
 export default function Page() {
   const services = [
@@ -50,26 +59,7 @@ export default function Page() {
     },
   ];
 
-  const testimonials = [
-    {
-      name: "Sarah Martinez",
-      role: "Founder, EcoTech Solutions",
-      content: "gatorinnovation transformed our sustainability startup idea into a fully functional platform. Their expertise in both design and development was invaluable.",
-      rating: 5
-    },
-    {
-      name: "Dr. Michael Chen",
-      role: "Professor, Computer Science",
-      content: "The team delivered exceptional work on our research collaboration portal. Professional, timely, and exceeded our expectations.",
-      rating: 5
-    },
-    {
-      name: "Jessica Williams",
-      role: "Student Entrepreneur",
-      content: "They helped bring our business plan to life with an amazing mobile app. The user experience is seamless and our customers love it.",
-      rating: 5
-    }
-  ];
+  
 
   
 
@@ -81,7 +71,7 @@ export default function Page() {
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-2">
               <div className="w-8 h-8 bg-gradient-to-br from-slate-600 to-slate-800 rounded-lg flex items-center justify-center">
-                <Zap className="h-5 w-5 text-white" />
+                <BulbSproutIcon />
               </div>
               <span className="text-xl text-black font-semibold">gatorinnovation</span>
             </div>
@@ -108,7 +98,7 @@ export default function Page() {
               Build your MVP fast
             </h1>
             <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-              Websites, mobile apps, and brands for student founders. Simple scope, quick delivery, great UX.
+              Websites, mobile apps, and brands for student entrepreneurs and business owners. Simple scope, quick delivery, great UX.
             </p>
             <Button size="lg" className="bg-black hover:bg-gray-800 text-white px-8 py-3 text-lg">
               Start your project
@@ -301,7 +291,7 @@ export default function Page() {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center space-x-2 mb-4 md:mb-0">
               <div className="w-6 h-6 bg-gradient-to-br from-slate-400 to-slate-600 rounded flex items-center justify-center">
-                <Zap className="h-4 w-4 text-white" />
+                <BulbSproutIcon className="[&>svg]:h-4 [&>svg]:w-4" />
               </div>
               <span className="text-xl text-white">gatorinnovation</span>
             </div>
