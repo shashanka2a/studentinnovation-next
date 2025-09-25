@@ -150,11 +150,11 @@ export default function FullAppConsultation() {
         {/* Chat Interface */}
         <Card className="h-[650px] flex flex-col shadow-lg">
           <CardHeader className="border-b bg-gradient-to-r from-purple-50 to-pink-50">
-            <CardTitle className="flex items-center text-lg">
+            <CardTitle className="flex items-center text-lg text-gray-900 font-bold">
               <Bot className="h-6 w-6 mr-3 text-purple-600" />
               Technical Requirements Consultation
             </CardTitle>
-            <CardDescription className="text-base">
+            <CardDescription className="text-base text-gray-700 font-medium">
               Let&apos;s discuss the technical architecture and features for your full application
             </CardDescription>
           </CardHeader>
@@ -235,7 +235,7 @@ export default function FullAppConsultation() {
                     onChange={(e) => setInputMessage(e.target.value)}
                     onKeyPress={handleKeyPress}
                     placeholder="Describe your app features and requirements..."
-                    className="flex-1 h-12 text-base border-2 border-gray-200 focus:border-purple-500 rounded-xl"
+                    className="flex-1 h-12 text-base border-2 border-gray-200 focus:border-purple-500 rounded-xl text-gray-900 placeholder:text-gray-500"
                   />
                   <Button
                     onClick={handleSendMessage}

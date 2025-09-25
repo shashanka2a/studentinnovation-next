@@ -104,7 +104,7 @@ export default function ProjectReview() {
           {/* Basic Info */}
           <Card className="shadow-lg">
             <CardHeader className="bg-gradient-to-r from-blue-50 to-purple-50">
-              <CardTitle className="flex items-center text-xl">
+              <CardTitle className="flex items-center text-xl text-gray-900 font-bold">
                 <Target className="h-6 w-6 mr-3 text-blue-600" />
                 Project Overview
               </CardTitle>
@@ -113,7 +113,7 @@ export default function ProjectReview() {
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-2">{projectData.name}</h3>
-                  <p className="text-gray-600 mb-4">{projectData.description}</p>
+                  <p className="text-gray-700 mb-4 font-medium">{projectData.description}</p>
                   <Badge variant="secondary" className="text-sm">
                     {projectData.category}
                   </Badge>
@@ -121,15 +121,15 @@ export default function ProjectReview() {
                 <div className="space-y-4">
                   <div>
                     <h4 className="font-semibold text-gray-900 mb-2">Target Audience</h4>
-                    <p className="text-gray-600">{projectData.targetAudience}</p>
+                    <p className="text-gray-700 font-medium">{projectData.targetAudience}</p>
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-900 mb-2">Timeline</h4>
-                    <p className="text-gray-600">{projectData.timeline}</p>
+                    <p className="text-gray-700 font-medium">{projectData.timeline}</p>
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-900 mb-2">Budget Range</h4>
-                    <p className="text-gray-600">{projectData.budget}</p>
+                    <p className="text-gray-700 font-medium">{projectData.budget}</p>
                   </div>
                 </div>
               </div>

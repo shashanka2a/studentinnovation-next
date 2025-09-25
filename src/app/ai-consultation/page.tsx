@@ -150,11 +150,11 @@ export default function AIConsultationPage() {
         {/* Chat Interface */}
         <Card className="h-[650px] flex flex-col shadow-lg">
           <CardHeader className="border-b bg-gradient-to-r from-blue-50 to-purple-50">
-            <CardTitle className="flex items-center text-lg">
+            <CardTitle className="flex items-center text-lg text-gray-900 font-bold">
               <Bot className="h-6 w-6 mr-3 text-blue-600" />
               Project Consultation
             </CardTitle>
-            <CardDescription className="text-base">
+            <CardDescription className="text-base text-gray-700 font-medium">
               Chat with our AI to refine your project requirements
             </CardDescription>
           </CardHeader>
@@ -235,7 +235,7 @@ export default function AIConsultationPage() {
                     onChange={(e) => setInputMessage(e.target.value)}
                     onKeyPress={handleKeyPress}
                     placeholder="Type your response..."
-                    className="flex-1 h-12 text-base border-2 border-gray-200 focus:border-blue-500 rounded-xl"
+                    className="flex-1 h-12 text-base border-2 border-gray-200 focus:border-blue-500 rounded-xl text-gray-900 placeholder:text-gray-500"
                   />
                   <Button
                     onClick={handleSendMessage}

@@ -267,7 +267,7 @@ export default function FullAppRoadmap() {
         >
           <Card className="shadow-lg">
             <CardHeader className="bg-gradient-to-r from-green-50 to-blue-50">
-              <CardTitle className="text-2xl text-center">What&apos;s Included in Your Full App</CardTitle>
+              <CardTitle className="text-2xl text-center text-gray-900 font-bold">What&apos;s Included in Your Full App</CardTitle>
             </CardHeader>
             <CardContent className="p-8">
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -276,28 +276,28 @@ export default function FullAppRoadmap() {
                     <Database className="h-8 w-8 text-blue-600" />
                   </div>
                   <h3 className="font-semibold text-gray-900 mb-2">Database</h3>
-                  <p className="text-sm text-gray-600">Scalable data architecture</p>
+                  <p className="text-sm text-gray-700 font-medium">Scalable data architecture</p>
                 </div>
                 <div className="text-center">
                   <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Shield className="h-8 w-8 text-green-600" />
                   </div>
                   <h3 className="font-semibold text-gray-900 mb-2">Security</h3>
-                  <p className="text-sm text-gray-600">Enterprise-grade protection</p>
+                  <p className="text-sm text-gray-700 font-medium">Enterprise-grade protection</p>
                 </div>
                 <div className="text-center">
                   <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Smartphone className="h-8 w-8 text-purple-600" />
                   </div>
                   <h3 className="font-semibold text-gray-900 mb-2">Mobile</h3>
-                  <p className="text-sm text-gray-600">Native mobile apps</p>
+                  <p className="text-sm text-gray-700 font-medium">Native mobile apps</p>
                 </div>
                 <div className="text-center">
                   <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Globe className="h-8 w-8 text-yellow-600" />
                   </div>
                   <h3 className="font-semibold text-gray-900 mb-2">Deployment</h3>
-                  <p className="text-sm text-gray-600">Production-ready hosting</p>
+                  <p className="text-sm text-gray-700 font-medium">Production-ready hosting</p>
                 </div>
               </div>
             </CardContent>

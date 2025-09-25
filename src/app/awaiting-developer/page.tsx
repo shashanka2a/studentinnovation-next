@@ -168,7 +168,7 @@ export default function AwaitingDeveloper() {
         >
           <Card className="shadow-lg">
             <CardHeader className="bg-gradient-to-r from-green-50 to-blue-50">
-              <CardTitle className="flex items-center text-2xl">
+              <CardTitle className="flex items-center text-2xl text-gray-900 font-bold">
                 <Zap className="h-6 w-6 mr-3 text-green-600" />
                 What&apos;s Happening Now
               </CardTitle>
@@ -179,21 +179,21 @@ export default function AwaitingDeveloper() {
                   <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white text-sm font-bold">✓</div>
                   <div>
                     <h4 className="font-semibold text-gray-900">Design System Created</h4>
-                    <p className="text-gray-600">Color palette, typography, and component library established</p>
+                    <p className="text-gray-700 font-medium">Color palette, typography, and component library established</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
                   <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-sm font-bold">⚡</div>
                   <div>
                     <h4 className="font-semibold text-gray-900">Landing Page Development</h4>
-                    <p className="text-gray-600">Responsive design and interactive elements being implemented</p>
+                    <p className="text-gray-700 font-medium">Responsive design and interactive elements being implemented</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
                   <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center text-white text-sm font-bold">⏳</div>
                   <div>
                     <h4 className="font-semibold text-gray-900">Quality Assurance</h4>
-                    <p className="text-gray-600">Testing and optimization (upcoming)</p>
+                    <p className="text-gray-700 font-medium">Testing and optimization (upcoming)</p>
                   </div>
                 </div>
               </div>

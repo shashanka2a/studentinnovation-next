@@ -73,15 +73,15 @@ export default function SignupPage() {
         >
           <Card>
             <CardHeader>
-              <CardTitle>Create your account</CardTitle>
-              <CardDescription>
+              <CardTitle className="text-gray-900 text-lg font-semibold">Create your account</CardTitle>
+              <CardDescription className="text-gray-700 text-base">
                 Get started with AI-powered project consultation
               </CardDescription>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <Label htmlFor="name">Full Name</Label>
+                  <Label htmlFor="name" className="text-gray-900 font-medium">Full Name</Label>
                   <Input
                     id="name"
                     name="name"
@@ -90,11 +90,12 @@ export default function SignupPage() {
                     value={formData.name}
                     onChange={handleInputChange}
                     placeholder="Enter your full name"
+                    className="text-gray-900 placeholder:text-gray-500"
                   />
                 </div>
 
                 <div>
-                  <Label htmlFor="email">Email</Label>
+                  <Label htmlFor="email" className="text-gray-900 font-medium">Email</Label>
                   <Input
                     id="email"
                     name="email"
@@ -103,11 +104,12 @@ export default function SignupPage() {
                     value={formData.email}
                     onChange={handleInputChange}
                     placeholder="Enter your email"
+                    className="text-gray-900 placeholder:text-gray-500"
                   />
                 </div>
 
                 <div>
-                  <Label htmlFor="password">Password</Label>
+                  <Label htmlFor="password" className="text-gray-900 font-medium">Password</Label>
                   <Input
                     id="password"
                     name="password"
@@ -116,11 +118,12 @@ export default function SignupPage() {
                     value={formData.password}
                     onChange={handleInputChange}
                     placeholder="Create a password"
+                    className="text-gray-900 placeholder:text-gray-500"
                   />
                 </div>
 
                 <div>
-                  <Label htmlFor="confirmPassword">Confirm Password</Label>
+                  <Label htmlFor="confirmPassword" className="text-gray-900 font-medium">Confirm Password</Label>
                   <Input
                     id="confirmPassword"
                     name="confirmPassword"
@@ -129,17 +132,18 @@ export default function SignupPage() {
                     value={formData.confirmPassword}
                     onChange={handleInputChange}
                     placeholder="Confirm your password"
+                    className="text-gray-900 placeholder:text-gray-500"
                   />
                 </div>
 
                 <div>
-                  <Label htmlFor="userType">I am a</Label>
+                  <Label htmlFor="userType" className="text-gray-900 font-medium">I am a</Label>
                   <select
                     id="userType"
                     name="userType"
                     value={formData.userType}
                     onChange={handleInputChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-500 text-gray-900 bg-white"
                   >
                     <option value="student-entrepreneur">Student Entrepreneur</option>
                     <option value="business-owner">Business Owner</option>
@@ -167,9 +171,9 @@ export default function SignupPage() {
               </form>
 
               <div className="mt-6 text-center">
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-gray-700">
                   Already have an account?{" "}
-                  <a href="/login" className="text-black hover:underline">
+                  <a href="/login" className="text-black hover:underline font-medium">
                     Sign in
                   </a>
                 </p>
@@ -185,18 +189,18 @@ export default function SignupPage() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="text-center"
         >
-          <div className="grid grid-cols-1 gap-4 text-sm text-gray-600">
+          <div className="grid grid-cols-1 gap-4 text-sm text-gray-800">
             <div className="flex items-center justify-center space-x-2">
               <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-              <span>AI-powered requirement gathering</span>
+              <span className="font-medium">AI-powered requirement gathering</span>
             </div>
             <div className="flex items-center justify-center space-x-2">
               <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-              <span>Landing pages in 2 days</span>
+              <span className="font-medium">Landing pages in 2 days</span>
             </div>
             <div className="flex items-center justify-center space-x-2">
               <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-              <span>Full applications in 1 week</span>
+              <span className="font-medium">Full applications in 1 week</span>
             </div>
           </div>
         </motion.div>

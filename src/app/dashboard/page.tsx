@@ -141,11 +141,11 @@ export default function DashboardPage() {
         >
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center">
+              <CardTitle className="flex items-center text-gray-900 text-xl font-bold">
                 <Sparkles className="h-5 w-5 mr-2 text-yellow-500" />
                 {steps[currentStep - 1].title}
               </CardTitle>
-              <CardDescription>
+              <CardDescription className="text-gray-700 text-base font-medium">
                 {steps[currentStep - 1].description}
               </CardDescription>
             </CardHeader>
@@ -153,37 +153,40 @@ export default function DashboardPage() {
               {currentStep === 1 && (
                 <>
                   <div>
-                    <Label htmlFor="name">Project Name</Label>
+                    <Label htmlFor="name" className="text-gray-900 font-semibold">Project Name</Label>
                     <Input
                       id="name"
                       name="name"
                       value={projectData.name}
                       onChange={handleInputChange}
                       placeholder="e.g., MyAwesomeApp"
+                      className="text-gray-900 placeholder:text-gray-500"
                     />
                   </div>
                   <div>
-                    <Label htmlFor="description">One-liner Description</Label>
+                    <Label htmlFor="description" className="text-gray-900 font-semibold">One-liner Description</Label>
                     <Input
                       id="description"
                       name="description"
                       value={projectData.description}
                       onChange={handleInputChange}
                       placeholder="A brief description of what you're building"
+                      className="text-gray-900 placeholder:text-gray-500"
                     />
                   </div>
                   <div>
-                    <Label htmlFor="website">Current Website (if any)</Label>
+                    <Label htmlFor="website" className="text-gray-900 font-semibold">Current Website (if any)</Label>
                     <Input
                       id="website"
                       name="website"
                       value={projectData.website}
                       onChange={handleInputChange}
                       placeholder="https://yourwebsite.com"
+                      className="text-gray-900 placeholder:text-gray-500"
                     />
                   </div>
                   <div>
-                    <Label>Logo Upload</Label>
+                    <Label className="text-gray-900 font-semibold">Logo Upload</Label>
                     <div className="mt-2">
                       <input
                         type="file"
