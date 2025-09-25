@@ -44,18 +44,21 @@ export default function Page() {
       category: "Marketplace",
       description: "Marketplace for UF students",
       image: "/GatorEx.png",
+      link: "https://www.gatorex.shop/",
     },
     {
       title: "Rydify",
       category: "Ride Sharing",
       description: "Split ride costs effortlessly",
       image: "/Rydify.png",
+      link: "https://rydify.co",
     },
     {
       title: "Vybr",
       category: "Housing Platform",
       description: "Discover your dream housing",
       image: "/Vybr.png",
+      link: "https://www.vybr.club/",
     },
   ];
 
@@ -147,10 +150,10 @@ export default function Page() {
                     <CardDescription className="text-gray-600">{study.description}</CardDescription>
                     <div className="border-t mt-6 pt-4">
                       <a
-                        href={study.title === "Vybr" ? "https://vybr.vercel.app" : study.title === "GatorEx" ? "https://gatorex.co" : "https://rydify.co"}
+                        href={study.link}
                         target="_blank"
                         rel="noreferrer noopener"
-                        className="inline-flex items-center gap-2 bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800"
+                        className="inline-flex items-center gap-2 bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 transition-colors"
                       >
                         View Live Project <ArrowRight className="h-4 w-4" />
                       </a>
@@ -288,16 +291,105 @@ export default function Page() {
       {/* Footer */}
       <footer className="bg-gray-900 text-gray-400 py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center space-x-2 mb-4 md:mb-0">
-              <div className="w-8 h-8 bg-gradient-to-br from-slate-600 to-slate-800 rounded-lg flex items-center justify-center">
-                <BulbSproutIcon />
+          <div className="grid md:grid-cols-4 gap-8 mb-8">
+            {/* Company Info */}
+            <div className="md:col-span-2">
+              <div className="flex items-center space-x-2 mb-4">
+                <div className="w-8 h-8 bg-gradient-to-br from-slate-600 to-slate-800 rounded-lg flex items-center justify-center">
+                  <BulbSproutIcon />
+                </div>
+                <span className="text-xl text-white">gatorinnovation</span>
               </div>
-              <span className="text-xl text-white">gatorinnovation</span>
+              <p className="text-gray-400 mb-4 max-w-md">
+                Empowering student entrepreneurs and business owners with cutting-edge web and mobile applications.
+              </p>
+              <div className="flex space-x-4">
+                <Button 
+                  size="sm" 
+                  className="bg-white text-black hover:bg-gray-200"
+                  onClick={() => window.location.href = '/signup'}
+                >
+                  Start Your Project
+                </Button>
+                <Button 
+                  size="sm" 
+                  variant="outline" 
+                  className="border-gray-600 text-gray-300 hover:bg-gray-800"
+                  onClick={() => window.location.href = '#case-studies'}
+                >
+                  View Our Work
+                </Button>
+              </div>
             </div>
-            <div className="text-center md:text-right">
-              <p>&copy; 2024 gatorinnovation. All rights reserved.</p>
-              <p className="text-sm mt-1">Empowering student entrepreneurs worldwide</p>
+
+            {/* Our Projects */}
+            <div>
+              <h3 className="text-white font-semibold mb-4">Our Projects</h3>
+              <div className="space-y-3">
+                <a 
+                  href="https://www.gatorex.shop/" 
+                  target="_blank" 
+                  rel="noreferrer noopener"
+                  className="block text-gray-400 hover:text-white transition-colors"
+                >
+                  GatorEx Marketplace
+                </a>
+                <a 
+                  href="https://www.vybr.club/" 
+                  target="_blank" 
+                  rel="noreferrer noopener"
+                  className="block text-gray-400 hover:text-white transition-colors"
+                >
+                  Vybr Housing Platform
+                </a>
+                <a 
+                  href="https://rydify.co" 
+                  target="_blank" 
+                  rel="noreferrer noopener"
+                  className="block text-gray-400 hover:text-white transition-colors"
+                >
+                  Rydify Ride Sharing
+                </a>
+              </div>
+            </div>
+
+            {/* Contact */}
+            <div>
+              <h3 className="text-white font-semibold mb-4">Contact</h3>
+              <div className="space-y-3">
+                <div className="flex items-center space-x-2">
+                  <Mail className="h-4 w-4" />
+                  <span>hello@gatorinnovation.com</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Phone className="h-4 w-4" />
+                  <span>(555) 123-INNOVATE</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <MapPin className="h-4 w-4" />
+                  <span>Student Innovation Hub</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom Bar */}
+          <div className="border-t border-gray-800 pt-8">
+            <div className="flex flex-col md:flex-row justify-between items-center">
+              <div className="text-center md:text-left">
+                <p>&copy; 2024 gatorinnovation. All rights reserved.</p>
+                <p className="text-sm mt-1">Empowering student entrepreneurs worldwide</p>
+              </div>
+              <div className="mt-4 md:mt-0">
+                <Button 
+                  size="sm" 
+                  className="bg-black hover:bg-gray-800 text-white"
+                  onClick={() => window.location.href = '/signup'}
+                >
+                  Get Started Today
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </div>
             </div>
           </div>
         </div>
