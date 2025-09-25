@@ -1,0 +1,173 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  name          String?
+  avatar        String?
+  userType      UserType  @default(STUDENT_ENTREPRENEUR)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  
+  // Relations
+  projects      Project[]
+  consultations Consultation[]
+  payments     Payment[]
+  
+  @@map("users")
+}
+
+model Project {
+  id              String        @id @default(cuid())
+  name            String
+  description     String?
+  website         String?
+  logo            String?
+  category        ProjectCategory @default(WEB_APP)
+  status          ProjectStatus  @default(DRAFT)
+  timeline        String?
+  budget          String?
+  targetAudience  String?
+  features        String[]       @default([])
+  
+  // Timestamps
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+  completedAt     DateTime?
+  
+  // Relations
+  userId          String
+  user            User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  consultations   Consultation[]
+  payments        Payment[]
+  milestones      Milestone[]
+  
+  @@map("projects")
+}
+
+model Consultation {
+  id              String            @id @default(cuid())
+  type            ConsultationType  @default(AI_CONSULTATION)
+  status          ConsultationStatus @default(ACTIVE)
+  messages        Json              @default("[]")
+  requirements    Json              @default("{}")
+  recommendations Json              @default("{}")
+  
+  // Timestamps
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+  completedAt     DateTime?
+  
+  // Relations
+  userId          String
+  user            User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  projectId       String?
+  project         Project?          @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  
+  @@map("consultations")
+}
+
+model Milestone {
+  id          String            @id @default(cuid())
+  title       String
+  description String?
+  status      MilestoneStatus   @default(PENDING)
+  dueDate     DateTime?
+  completedAt DateTime?
+  
+  // Timestamps
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+  
+  // Relations
+  projectId   String
+  project     Project           @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  
+  @@map("milestones")
+}
+
+model Payment {
+  id              String        @id @default(cuid())
+  amount          Decimal       @db.Decimal(10, 2)
+  currency        String        @default("USD")
+  status          PaymentStatus @default(PENDING)
+  stripePaymentId String?
+  stripeSessionId String?
+  
+  // Timestamps
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+  paidAt          DateTime?
+  
+  // Relations
+  userId          String
+  user            User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  projectId       String?
+  project         Project?      @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  
+  @@map("payments")
+}
+
+// Enums
+enum UserType {
+  STUDENT_ENTREPRENEUR
+  BUSINESS_OWNER
+  STARTUP_FOUNDER
+}
+
+enum ProjectCategory {
+  WEB_APP
+  MOBILE_APP
+  LANDING_PAGE
+  E_COMMERCE
+  SAAS
+  MARKETPLACE
+  PORTFOLIO
+  BLOG
+}
+
+enum ProjectStatus {
+  DRAFT
+  IN_CONSULTATION
+  IN_DEVELOPMENT
+  IN_REVIEW
+  COMPLETED
+  CANCELLED
+}
+
+enum ConsultationType {
+  AI_CONSULTATION
+  FULL_APP_CONSULTATION
+  TECHNICAL_REVIEW
+}
+
+enum ConsultationStatus {
+  ACTIVE
+  COMPLETED
+  CANCELLED
+}
+
+enum MilestoneStatus {
+  PENDING
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+}
+
+enum PaymentStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+  REFUNDED
+}
