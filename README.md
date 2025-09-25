@@ -90,9 +90,9 @@ GatorInnovation is a comprehensive platform that connects student entrepreneurs 
 ### **Access Control:**
 - **Restricted Access**: Only authorized admin emails
 - **Admin Users**: 
-  - `jagannathamshashank@gmail.com`
-  - `payal@starterspace.com`
-  - `quang@starterspace.com`
+  - `admin1@ymail.com`
+  - `admin2@ymail.com`
+  - `admin3@ymail.com`
 
 ### **Admin Features:**
 - **Project Management**: View and update all client projects
@@ -173,7 +173,7 @@ npm run dev
 
 ### **Environment Variables:**
 ```env
-DATABASE_URL=postgresql://postgres:password@localhost:5432/gatorinnovation
+DATABASE_URL=postgresql://username:password@localhost:5432/database_name
 NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
 SUPABASE_SERVICE_ROLE_KEY=your-supabase-service-role-key
@@ -189,11 +189,11 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
 
 ### **Required Environment Variables:**
 ```
-DATABASE_URL=postgresql://postgres:wkiYQ9m6bmlenTQa@db.hvadstswmmshkxxdpelu.supabase.co:5432/postgres
-NEXT_PUBLIC_SUPABASE_URL=https://hvadstswmmshkxxdpelu.supabase.co
+DATABASE_URL=postgresql://username:password@host:port/database
+NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
 SUPABASE_SERVICE_ROLE_KEY=your-supabase-service-role-key
-NEXT_PUBLIC_APP_URL=https://gatorinnovation.com
+NEXT_PUBLIC_APP_URL=https://your-domain.com
 NODE_ENV=production
 ```
 
@@ -253,7 +253,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## 🆘 Support
 
 For support and questions:
-- **Email**: jagannathamshashank@gmail.com
+- **Email**: support@gatorinnovation.com
 - **Documentation**: See docs/ folder
 - **Issues**: GitHub Issues
 
