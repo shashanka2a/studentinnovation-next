@@ -100,7 +100,7 @@ export default function Page() {
             <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
               Websites, mobile apps, and brands for student entrepreneurs and business owners. Simple scope, quick delivery, great UX.
             </p>
-            <Button size="lg" className="bg-black hover:bg-gray-800 text-white px-8 py-3 text-lg">
+            <Button size="lg" className="bg-black hover:bg-gray-800 text-white px-8 py-3 text-lg" onClick={() => window.location.href = '/signup'}>
               Start your project
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
@@ -249,7 +249,7 @@ export default function Page() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-              <Button size="lg" className="bg-slate-600 hover:bg-slate-700 text-white px-8 py-3">
+              <Button size="lg" className="bg-slate-600 hover:bg-slate-700 text-white px-8 py-3" onClick={() => window.location.href = '/signup'}>
                 Get Started Today
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
