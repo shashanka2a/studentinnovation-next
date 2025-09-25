@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { motion } from "motion/react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Clock, CheckCircle, Users, MessageSquare, Calendar, Zap } from "lucide-react";
+import { ArrowRight, Clock, CheckCircle, Users, MessageSquare, Calendar, Zap, Loader2 } from "lucide-react";
 
 function BulbSproutIcon({ className = "" }: { className?: string }) {
   return (
@@ -24,6 +24,7 @@ export default function AwaitingDeveloper() {
   const router = useRouter();
   const [timeRemaining] = useState("1 day, 23 hours");
   const [progress, setProgress] = useState(15);
+  const [isNavigating, setIsNavigating] = useState(false);
 
   useEffect(() => {
     // Simulate progress updates
@@ -35,7 +36,10 @@ export default function AwaitingDeveloper() {
   }, []);
 
   const handleUpgrade = () => {
-    router.push("/full-app-consultation");
+    setIsNavigating(true);
+    setTimeout(() => {
+      router.push("/full-app-consultation");
+    }, 800);
   };
 
   const handleContact = () => {
@@ -244,10 +248,20 @@ export default function AwaitingDeveloper() {
                   </div>
                   <Button
                     onClick={handleUpgrade}
-                    className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-xl shadow-lg"
+                    className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-xl shadow-lg transition-all duration-300"
+                    disabled={isNavigating}
                   >
-                    Start Full App Development
-                    <ArrowRight className="ml-2 h-5 w-5" />
+                    {isNavigating ? (
+                      <>
+                        <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                        Starting Consultation...
+                      </>
+                    ) : (
+                      <>
+                        Start Full App Development
+                        <ArrowRight className="ml-2 h-5 w-5" />
+                      </>
+                    )}
                   </Button>
                 </div>
               </div>

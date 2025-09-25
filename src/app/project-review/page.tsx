@@ -6,7 +6,7 @@ import { motion } from "motion/react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight, CheckCircle, Edit, Clock, Target, Palette, Code } from "lucide-react";
+import { ArrowRight, CheckCircle, Edit, Clock, Target, Palette, Code, Loader2 } from "lucide-react";
 
 function BulbSproutIcon({ className = "" }: { className?: string }) {
   return (
@@ -44,10 +44,10 @@ export default function ProjectReview() {
 
   const handleConfirm = () => {
     setIsConfirming(true);
-    // Simulate processing
+    // Simulate processing with smooth transition
     setTimeout(() => {
       router.push("/awaiting-developer");
-    }, 1500);
+    }, 1200);
   };
 
   const handleEdit = () => {
@@ -218,23 +218,23 @@ export default function ProjectReview() {
           transition={{ delay: 0.4 }}
           className="flex flex-col sm:flex-row gap-4 justify-center mt-8"
         >
-          <Button
-            onClick={handleConfirm}
-            disabled={isConfirming}
-            className="bg-black hover:bg-gray-800 text-white px-8 py-3 text-lg rounded-xl shadow-lg"
-          >
-            {isConfirming ? (
-              <div className="flex items-center">
-                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-3"></div>
-                Confirming...
-              </div>
-            ) : (
-              <>
-                Confirm & Start Development
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </>
-            )}
-          </Button>
+            <Button
+              onClick={handleConfirm}
+              disabled={isConfirming}
+              className="bg-black hover:bg-gray-800 text-white px-8 py-3 text-lg rounded-xl shadow-lg transition-all duration-300"
+            >
+              {isConfirming ? (
+                <>
+                  <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                  Confirming & Starting Development...
+                </>
+              ) : (
+                <>
+                  Confirm & Start Development
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </>
+              )}
+            </Button>
           <Button
             variant="outline"
             onClick={handleEdit}

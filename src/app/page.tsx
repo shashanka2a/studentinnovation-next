@@ -1,9 +1,10 @@
 "use client"
+import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ImageWithFallback } from "@/components/figma/ImageWithFallback";
 import { motion } from "motion/react";
-import { ArrowRight, Code, Smartphone, Palette, Users, Mail, Phone, MapPin, Lightbulb, Sprout } from "lucide-react";
+import { ArrowRight, Code, Smartphone, Palette, Users, Mail, Phone, MapPin, Lightbulb, Sprout, Loader2 } from "lucide-react";
 
 function BulbSproutIcon({ className = "" }: { className?: string }) {
   return (
@@ -15,6 +16,16 @@ function BulbSproutIcon({ className = "" }: { className?: string }) {
 }
 
 export default function Page() {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleGetStarted = () => {
+    setIsLoading(true);
+    // Simulate a brief loading state for better UX
+    setTimeout(() => {
+      window.location.href = '/signup';
+    }, 800);
+  };
+
   const services = [
     {
       icon: <Code className="h-8 w-8" />,
@@ -103,9 +114,23 @@ export default function Page() {
             <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
               Websites, mobile apps, and brands for student entrepreneurs and business owners. Simple scope, quick delivery, great UX.
             </p>
-            <Button size="lg" className="bg-black hover:bg-gray-800 text-white px-8 py-3 text-lg" onClick={() => window.location.href = '/signup'}>
-              Start your project
-              <ArrowRight className="ml-2 h-5 w-5" />
+            <Button 
+              size="lg" 
+              className="bg-black hover:bg-gray-800 text-white px-8 py-3 text-lg transition-all duration-300" 
+              onClick={handleGetStarted}
+              disabled={isLoading}
+            >
+              {isLoading ? (
+                <>
+                  <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                  Getting Started...
+                </>
+              ) : (
+                <>
+                  Start your project
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </>
+              )}
             </Button>
           </motion.div>
         </div>
@@ -252,11 +277,30 @@ export default function Page() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-              <Button size="lg" className="bg-slate-600 hover:bg-slate-700 text-white px-8 py-3" onClick={() => window.location.href = '/signup'}>
-                Get Started Today
-                <ArrowRight className="ml-2 h-5 w-5" />
+              <Button 
+                size="lg" 
+                className="bg-slate-600 hover:bg-slate-700 text-white px-8 py-3 transition-all duration-300" 
+                onClick={handleGetStarted}
+                disabled={isLoading}
+              >
+                {isLoading ? (
+                  <>
+                    <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                    Getting Started...
+                  </>
+                ) : (
+                  <>
+                    Get Started Today
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </>
+                )}
               </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-black px-8 py-3">
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="border-white text-white hover:bg-white hover:text-black px-8 py-3 transition-all duration-300"
+                onClick={() => document.getElementById('case-studies')?.scrollIntoView({ behavior: 'smooth' })}
+              >
                 View Our Portfolio
               </Button>
             </div>
@@ -306,16 +350,24 @@ export default function Page() {
               <div className="flex space-x-4">
                 <Button 
                   size="sm" 
-                  className="bg-white text-black hover:bg-gray-200"
-                  onClick={() => window.location.href = '/signup'}
+                  className="bg-white text-black hover:bg-gray-200 transition-all duration-300"
+                  onClick={handleGetStarted}
+                  disabled={isLoading}
                 >
-                  Start Your Project
+                  {isLoading ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Starting...
+                    </>
+                  ) : (
+                    'Start Your Project'
+                  )}
                 </Button>
                 <Button 
                   size="sm" 
                   variant="outline" 
-                  className="border-gray-600 text-gray-300 hover:bg-gray-800"
-                  onClick={() => window.location.href = '#case-studies'}
+                  className="border-gray-600 text-gray-300 hover:bg-gray-800 transition-all duration-300"
+                  onClick={() => document.getElementById('case-studies')?.scrollIntoView({ behavior: 'smooth' })}
                 >
                   View Our Work
                 </Button>
@@ -383,11 +435,21 @@ export default function Page() {
               <div className="mt-4 md:mt-0">
                 <Button 
                   size="sm" 
-                  className="bg-black hover:bg-gray-800 text-white"
-                  onClick={() => window.location.href = '/signup'}
+                  className="bg-black hover:bg-gray-800 text-white transition-all duration-300"
+                  onClick={handleGetStarted}
+                  disabled={isLoading}
                 >
-                  Get Started Today
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  {isLoading ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Getting Started...
+                    </>
+                  ) : (
+                    <>
+                      Get Started Today
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </>
+                  )}
                 </Button>
               </div>
             </div>

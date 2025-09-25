@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { motion, AnimatePresence } from "motion/react";
-import { ArrowRight, Send, Lightbulb, Sprout, Sparkles, Bot, User, CheckCircle, Clock } from "lucide-react";
+import { ArrowRight, Send, Lightbulb, Sprout, Sparkles, Bot, User, CheckCircle, Clock, Loader2 } from "lucide-react";
 
 function BulbSproutIcon({ className = "" }: { className?: string }) {
   return (
@@ -37,6 +37,7 @@ export default function AIConsultationPage() {
   const [inputMessage, setInputMessage] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const [consultationComplete, setConsultationComplete] = useState(false);
+  const [isNavigating, setIsNavigating] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -100,7 +101,10 @@ export default function AIConsultationPage() {
   };
 
   const completeConsultation = () => {
-    router.push("/project-review");
+    setIsNavigating(true);
+    setTimeout(() => {
+      router.push("/project-review");
+    }, 800);
   };
 
   return (
@@ -259,10 +263,20 @@ export default function AIConsultationPage() {
                   </p>
                   <Button
                     onClick={completeConsultation}
-                    className="bg-black hover:bg-gray-800 text-white px-8 py-3 text-lg rounded-xl shadow-lg"
+                    className="bg-black hover:bg-gray-800 text-white px-8 py-3 text-lg rounded-xl shadow-lg transition-all duration-300"
+                    disabled={isNavigating}
                   >
-                    Review Project Details
-                    <ArrowRight className="ml-2 h-5 w-5" />
+                    {isNavigating ? (
+                      <>
+                        <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                        Reviewing Details...
+                      </>
+                    ) : (
+                      <>
+                        Review Project Details
+                        <ArrowRight className="ml-2 h-5 w-5" />
+                      </>
+                    )}
                   </Button>
                 </motion.div>
               </div>

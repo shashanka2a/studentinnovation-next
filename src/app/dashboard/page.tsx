@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { motion } from "motion/react";
-import { ArrowRight, Plus, Lightbulb, Sprout, Sparkles, Clock, CheckCircle } from "lucide-react";
+import { ArrowRight, Plus, Lightbulb, Sprout, Sparkles, Clock, CheckCircle, Loader2 } from "lucide-react";
 
 function BulbSproutIcon({ className = "" }: { className?: string }) {
   return (
@@ -20,6 +20,7 @@ function BulbSproutIcon({ className = "" }: { className?: string }) {
 export default function DashboardPage() {
   const router = useRouter();
   const [currentStep, setCurrentStep] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
   const [projectData, setProjectData] = useState({
     name: "",
     description: "",
@@ -68,8 +69,11 @@ export default function DashboardPage() {
     if (currentStep < 3) {
       setCurrentStep(currentStep + 1);
     } else {
-      // Start AI consultation
-      router.push("/ai-consultation");
+      // Start AI consultation with loading state
+      setIsLoading(true);
+      setTimeout(() => {
+        router.push("/ai-consultation");
+      }, 800);
     }
   };
 
@@ -285,10 +289,20 @@ export default function DashboardPage() {
                 </Button>
                 <Button
                   onClick={nextStep}
-                  className="bg-black hover:bg-gray-800 text-white"
+                  className="bg-black hover:bg-gray-800 text-white transition-all duration-300"
+                  disabled={isLoading}
                 >
-                  {currentStep === 3 ? "Start AI Consultation" : "Next Step"}
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  {isLoading ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Starting Consultation...
+                    </>
+                  ) : (
+                    <>
+                      {currentStep === 3 ? "Start AI Consultation" : "Next Step"}
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </>
+                  )}
                 </Button>
               </div>
             </CardContent>

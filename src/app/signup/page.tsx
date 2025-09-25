@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { motion } from "motion/react";
-import { ArrowRight, Lightbulb, Sprout } from "lucide-react";
+import { ArrowRight, Lightbulb, Sprout, Loader2 } from "lucide-react";
 
 function BulbSproutIcon({ className = "" }: { className?: string }) {
   return (
@@ -149,11 +149,20 @@ export default function SignupPage() {
 
                 <Button 
                   type="submit" 
-                  className="w-full bg-black hover:bg-gray-800 text-white"
+                  className="w-full bg-black hover:bg-gray-800 text-white transition-all duration-300"
                   disabled={isLoading}
                 >
-                  {isLoading ? "Creating Account..." : "Get Started"}
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  {isLoading ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Creating Account...
+                    </>
+                  ) : (
+                    <>
+                      Get Started
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </>
+                  )}
                 </Button>
               </form>
 
