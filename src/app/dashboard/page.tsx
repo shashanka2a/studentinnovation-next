@@ -208,11 +208,11 @@ export default function DashboardPage() {
               {currentStep === 2 && (
                 <>
                   <div>
-                    <Label>Key Features</Label>
+                    <Label className="text-gray-900 font-semibold">Key Features</Label>
                     <div className="mt-2 space-y-2">
                       {projectData.features.map((feature, index) => (
                         <div key={index} className="flex items-center justify-between bg-gray-50 p-3 rounded-md">
-                          <span>{feature}</span>
+                          <span className="text-gray-900 font-medium">{feature}</span>
                           <Button
                             variant="ghost"
                             size="sm"
@@ -234,13 +234,14 @@ export default function DashboardPage() {
                     </div>
                   </div>
                   <div>
-                    <Label htmlFor="targetAudience">Target Audience</Label>
+                    <Label htmlFor="targetAudience" className="text-gray-900 font-semibold">Target Audience</Label>
                     <Input
                       id="targetAudience"
                       name="targetAudience"
                       value={projectData.targetAudience}
                       onChange={handleInputChange}
                       placeholder="Who will use your product?"
+                      className="text-gray-900 placeholder:text-gray-500"
                     />
                   </div>
                 </>
@@ -249,13 +250,13 @@ export default function DashboardPage() {
               {currentStep === 3 && (
                 <>
                   <div>
-                    <Label htmlFor="timeline">Preferred Timeline</Label>
+                    <Label htmlFor="timeline" className="text-gray-900 font-semibold">Preferred Timeline</Label>
                     <select
                       id="timeline"
                       name="timeline"
                       value={projectData.timeline}
                       onChange={(e) => setProjectData(prev => ({ ...prev, timeline: e.target.value }))}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-500"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-500 text-gray-900 bg-white"
                     >
                       <option value="">Select timeline</option>
                       <option value="2-days">Landing Page (2 days)</option>
@@ -264,13 +265,13 @@ export default function DashboardPage() {
                     </select>
                   </div>
                   <div>
-                    <Label htmlFor="budget">Budget Range</Label>
+                    <Label htmlFor="budget" className="text-gray-900 font-semibold">Budget Range</Label>
                     <select
                       id="budget"
                       name="budget"
                       value={projectData.budget}
                       onChange={(e) => setProjectData(prev => ({ ...prev, budget: e.target.value }))}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-500"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-500 text-gray-900 bg-white"
                     >
                       <option value="">Select budget</option>
                       <option value="500-1000">$500 - $1,000</option>

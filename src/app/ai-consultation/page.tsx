@@ -30,7 +30,7 @@ export default function AIConsultationPage() {
     {
       id: '1',
       type: 'ai',
-      content: "Hello! I&apos;m your AI consultant. I&apos;ve reviewed your project details and I&apos;m excited to help you build your MVP. Let&apos;s start by understanding your vision better. What&apos;s the main problem your product solves?",
+      content: "👋 Hello! I&apos;m your AI consultant and I&apos;m thrilled to help you bring your vision to life! I&apos;ve reviewed your project details and I can already see the potential in what you&apos;re building. Let&apos;s dive deeper into your vision - what&apos;s the main problem your product solves, and how do you envision it making a difference for your users?",
       timestamp: new Date()
     }
   ]);
@@ -148,7 +148,7 @@ export default function AIConsultationPage() {
         </motion.div>
 
         {/* Chat Interface */}
-        <Card className="h-[650px] flex flex-col shadow-lg">
+        <Card className="h-[600px] flex flex-col shadow-lg">
           <CardHeader className="border-b bg-gradient-to-r from-blue-50 to-purple-50">
             <CardTitle className="flex items-center text-lg text-gray-900 font-bold">
               <Bot className="h-6 w-6 mr-3 text-blue-600" />
@@ -161,7 +161,7 @@ export default function AIConsultationPage() {
           
           <CardContent className="flex-1 flex flex-col p-0">
             {/* Messages */}
-            <div className="flex-1 overflow-y-auto p-6 space-y-6 bg-gray-50">
+            <div className="flex-1 overflow-y-auto p-6 space-y-6 bg-gray-50 max-h-[500px]">
               <AnimatePresence>
                 {messages.map((message) => (
                   <motion.div
@@ -228,7 +228,7 @@ export default function AIConsultationPage() {
 
             {/* Input Area */}
             {!consultationComplete ? (
-              <div className="border-t bg-white p-6">
+              <div className="border-t bg-white p-6 flex-shrink-0">
                 <div className="flex space-x-3">
                   <Input
                     value={inputMessage}
