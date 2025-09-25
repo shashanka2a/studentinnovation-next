@@ -149,7 +149,7 @@ export default function FullAppConsultation() {
 
         {/* Chat Interface */}
         <Card className="h-[600px] flex flex-col shadow-lg">
-          <CardHeader className="border-b bg-gradient-to-r from-purple-50 to-pink-50">
+          <CardHeader className="border-b bg-gradient-to-r from-purple-50 to-pink-50 flex-shrink-0">
             <CardTitle className="flex items-center text-lg text-gray-900 font-bold">
               <Bot className="h-6 w-6 mr-3 text-purple-600" />
               Technical Requirements Consultation
@@ -159,9 +159,9 @@ export default function FullAppConsultation() {
             </CardDescription>
           </CardHeader>
           
-          <CardContent className="flex-1 flex flex-col p-0">
+          <CardContent className="flex-1 flex flex-col p-0 min-h-0">
             {/* Messages */}
-            <div className="flex-1 overflow-y-auto p-6 space-y-6 bg-gray-50 max-h-[500px]">
+            <div className="flex-1 overflow-y-auto p-6 space-y-6 bg-gray-50 min-h-0">
               <AnimatePresence>
                 {messages.map((message) => (
                   <motion.div
@@ -228,7 +228,7 @@ export default function FullAppConsultation() {
 
             {/* Input Area */}
             {!consultationComplete ? (
-              <div className="border-t bg-white p-6 flex-shrink-0">
+              <div className="border-t bg-white p-6 flex-shrink-0 mt-auto">
                 <div className="flex space-x-3">
                   <Input
                     value={inputMessage}
