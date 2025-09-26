@@ -1,0 +1,186 @@
+{
+  "timestamp": "2025-09-26T20:09:59.715Z",
+  "results": {
+    "landingPage": false,
+    "signupPage": true,
+    "dashboardPage": true,
+    "aiConsultationPage": true,
+    "projectReviewPage": true,
+    "awaitingDeveloperPage": true,
+    "fullAppConsultationPage": true,
+    "fullAppRoadmapPage": true,
+    "paymentPage": true,
+    "userStory": true,
+    "mockClientData": true
+  },
+  "summary": {
+    "totalTests": 11,
+    "passedTests": 10,
+    "failedTests": 1,
+    "successRate": 91
+  },
+  "mockClient": {
+    "user": {
+      "name": "Sarah Johnson",
+      "email": "sarah.johnson@example.com",
+      "password": "SecurePass123!",
+      "userType": "student-entrepreneur"
+    },
+    "project": {
+      "name": "EcoTrack",
+      "description": "A mobile app to track carbon footprint and suggest eco-friendly alternatives",
+      "website": "https://ecotrack.app",
+      "category": "Mobile App",
+      "targetAudience": "Environmentally conscious individuals aged 18-35",
+      "keyFeatures": [
+        "Carbon footprint calculator",
+        "Eco-friendly product recommendations",
+        "Progress tracking dashboard",
+        "Social sharing features",
+        "Gamification elements"
+      ],
+      "techStack": [
+        "React Native",
+        "Firebase",
+        "Node.js",
+        "MongoDB"
+      ],
+      "timeline": "2 weeks",
+      "budget": "$2,500 - $5,000"
+    },
+    "aiConsultation": {
+      "userResponses": [
+        "The main problem is that people want to be environmentally conscious but don't know how to track their impact or find better alternatives.",
+        "I want users to be able to scan products and get instant carbon footprint data, plus recommendations for greener alternatives.",
+        "The app should have a social aspect where users can share their progress and challenge friends to be more eco-friendly.",
+        "I'm thinking gamification elements like earning points for eco-friendly choices and unlocking achievements."
+      ],
+      "aiResponses": [
+        "Excellent! I can see EcoTrack has real potential to make environmental consciousness more accessible and engaging.",
+        "Perfect! The social and gamification elements will definitely increase user engagement and retention.",
+        "That's a great approach! The social challenges feature could be a key differentiator.",
+        "Excellent! I have a clear picture of EcoTrack now. Based on our discussion, I can see this is a comprehensive mobile application with significant potential."
+      ]
+    },
+    "payment": {
+      "cardNumber": "4242424242424242",
+      "expiryDate": "12/25",
+      "cvv": "123",
+      "name": "Sarah Johnson",
+      "email": "sarah.johnson@example.com",
+      "address": "123 University Ave",
+      "city": "Gainesville",
+      "zipCode": "32601"
+    }
+  },
+  "testScenarios": [
+    {
+      "name": "Student Entrepreneur - EcoTrack App",
+      "userType": "student-entrepreneur",
+      "project": "EcoTrack",
+      "budget": "$2,500 - $5,000",
+      "timeline": "2 weeks"
+    },
+    {
+      "name": "Business Owner - InventoryPro",
+      "userType": "business-owner",
+      "project": "InventoryPro",
+      "budget": "$5,000 - $10,000",
+      "timeline": "1 month"
+    },
+    {
+      "name": "Startup - HealthTracker",
+      "userType": "startup",
+      "project": "HealthTracker",
+      "budget": "$10,000+",
+      "timeline": "2 months"
+    }
+  ],
+  "expectedOutcomes": {
+    "landingPage": {
+      "title": "Build your MVP fast",
+      "ctaText": "Start your project",
+      "projects": [
+        "GatorEx",
+        "Rydify",
+        "Vybr"
+      ],
+      "services": [
+        "Websites",
+        "Mobile Apps",
+        "Branding",
+        "UX Design"
+      ]
+    },
+    "signupPage": {
+      "formFields": [
+        "name",
+        "email",
+        "password",
+        "confirmPassword",
+        "userType"
+      ],
+      "oauthButtons": [
+        "Google",
+        "Apple"
+      ],
+      "validation": true
+    },
+    "dashboardPage": {
+      "steps": 3,
+      "step1Fields": [
+        "name",
+        "description",
+        "website",
+        "logo"
+      ],
+      "step2Fields": [
+        "features",
+        "targetAudience"
+      ],
+      "step3Fields": [
+        "budget",
+        "timeline"
+      ],
+      "navigation": true
+    },
+    "aiConsultationPage": {
+      "chatInterface": true,
+      "welcomeMessage": true,
+      "userInput": true,
+      "aiResponse": true,
+      "completion": true
+    },
+    "projectReviewPage": {
+      "projectSummary": true,
+      "confirmButton": true,
+      "editOption": true,
+      "features": true
+    },
+    "awaitingDeveloperPage": {
+      "progressBar": true,
+      "timeline": true,
+      "upgradeOption": true,
+      "statusUpdates": true
+    },
+    "fullAppConsultationPage": {
+      "advancedChat": true,
+      "technicalDiscussion": true,
+      "roadmapButton": true,
+      "completion": true
+    },
+    "fullAppRoadmapPage": {
+      "phases": 7,
+      "pricingPlans": 3,
+      "paymentButton": true,
+      "features": true
+    },
+    "paymentPage": {
+      "paymentForm": true,
+      "orderSummary": true,
+      "securityBadges": true,
+      "successScreen": true,
+      "validation": true
+    }
+  }
+}

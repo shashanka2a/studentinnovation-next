@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ArrowRight, Bot, User, Send, CheckCircle, Sparkles, Clock, Code } from "lucide-react";
+import { generateAIResponse, generateFullAppConsultationMessage, ChatMessage } from "@/lib/openai";
 
 function BulbSproutIcon({ className = "" }: { className?: string }) {
   return (
@@ -30,17 +31,11 @@ interface Message {
 
 export default function FullAppConsultation() {
   const router = useRouter();
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: 1,
-      content: "🚀 Excellent! I can see you're ready to take your project to the next level with full app development! I'm excited to help you build something amazing. Let's dive deeper into the technical requirements - what specific features do you need for your full application, and what's your vision for the complete user experience?",
-      type: "ai",
-      timestamp: new Date(),
-    },
-  ]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [inputMessage, setInputMessage] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const [consultationComplete, setConsultationComplete] = useState(false);
+  const [isInitializing, setIsInitializing] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -51,8 +46,36 @@ export default function FullAppConsultation() {
     scrollToBottom();
   }, [messages]);
 
-  const handleSendMessage = () => {
-    if (!inputMessage.trim()) return;
+  // Initialize with AI welcome message
+  useEffect(() => {
+    const initializeChat = async () => {
+      try {
+        setIsInitializing(true);
+        const welcomeMessage = await generateFullAppConsultationMessage();
+        setMessages([{
+          id: 1,
+          type: 'ai',
+          content: welcomeMessage,
+          timestamp: new Date()
+        }]);
+      } catch (error) {
+        console.error('Error initializing chat:', error);
+        setMessages([{
+          id: 1,
+          type: 'ai',
+          content: "🚀 Excellent! I can see you're ready to take your project to the next level with full app development! Let's dive deeper into the technical requirements - what specific features do you need for your full application?",
+          timestamp: new Date()
+        }]);
+      } finally {
+        setIsInitializing(false);
+      }
+    };
+
+    initializeChat();
+  }, []);
+
+  const handleSendMessage = async () => {
+    if (!inputMessage.trim() || isTyping) return;
 
     const userMessage: Message = {
       id: Date.now(),
@@ -62,31 +85,34 @@ export default function FullAppConsultation() {
     };
 
     setMessages(prev => [...prev, userMessage]);
+    const currentInput = inputMessage;
     setInputMessage("");
     setIsTyping(true);
 
-    // Simulate AI response
-    setTimeout(() => {
-      const aiResponses = [
-        "That's a great feature! How do you envision user authentication working? Do you need social login, email/password, or both?",
-        "Excellent choice. For the database, what type of data will you be storing? User profiles, content, transactions, or analytics?",
-        "Perfect! What about real-time features? Do you need live updates, notifications, or real-time collaboration?",
-        "Great! For the payment system, what payment methods do you want to support? Credit cards, PayPal, or cryptocurrency?",
-        "Excellent! What about the user interface? Do you have specific design preferences or should we create a modern, intuitive design?",
-        "Perfect! One last question - what's your target timeline for the full application? This will help us plan the development phases.",
-      ];
+    try {
+      // Convert messages to OpenAI format
+      const chatMessages: ChatMessage[] = messages.map(msg => ({
+        role: msg.type === 'user' ? 'user' : 'assistant',
+        content: msg.content
+      }));
 
-      const randomResponse = aiResponses[Math.floor(Math.random() * aiResponses.length)];
+      // Add current user message
+      chatMessages.push({
+        role: 'user',
+        content: currentInput
+      });
+
+      // Get AI response
+      const aiResponse = await generateAIResponse(chatMessages);
       
       const aiMessage: Message = {
         id: Date.now() + 1,
-        content: randomResponse,
+        content: aiResponse,
         type: "ai",
         timestamp: new Date(),
       };
-
+      
       setMessages(prev => [...prev, aiMessage]);
-      setIsTyping(false);
 
       // Auto-complete consultation after 6 messages
       if (messages.length >= 6) {
@@ -94,7 +120,18 @@ export default function FullAppConsultation() {
           setConsultationComplete(true);
         }, 2000);
       }
-    }, 1500);
+    } catch (error) {
+      console.error('Error getting AI response:', error);
+      const errorMessage: Message = {
+        id: Date.now() + 1,
+        content: "I apologize, but I encountered a technical issue. Please try again in a moment.",
+        type: "ai",
+        timestamp: new Date(),
+      };
+      setMessages(prev => [...prev, errorMessage]);
+    } finally {
+      setIsTyping(false);
+    }
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {

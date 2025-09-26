@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowRight, Send, Lightbulb, Sprout, Sparkles, Bot, User, CheckCircle, Clock, Loader2 } from "lucide-react";
+import { generateAIResponse, generateInitialMessage, ChatMessage } from "@/lib/openai";
 
 function BulbSproutIcon({ className = "" }: { className?: string }) {
   return (
@@ -26,18 +27,12 @@ interface Message {
 
 export default function AIConsultationPage() {
   const router = useRouter();
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: '1',
-      type: 'ai',
-      content: "👋 Hello! I&apos;m your AI consultant and I&apos;m thrilled to help you bring your vision to life! I&apos;ve reviewed your project details and I can already see the potential in what you&apos;re building. Let&apos;s dive deeper into your vision - what&apos;s the main problem your product solves, and how do you envision it making a difference for your users?",
-      timestamp: new Date()
-    }
-  ]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [inputMessage, setInputMessage] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const [consultationComplete, setConsultationComplete] = useState(false);
   const [isNavigating, setIsNavigating] = useState(false);
+  const [isInitializing, setIsInitializing] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -47,6 +42,34 @@ export default function AIConsultationPage() {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  // Initialize with AI welcome message
+  useEffect(() => {
+    const initializeChat = async () => {
+      try {
+        setIsInitializing(true);
+        const welcomeMessage = await generateInitialMessage();
+        setMessages([{
+          id: '1',
+          type: 'ai',
+          content: welcomeMessage,
+          timestamp: new Date()
+        }]);
+      } catch (error) {
+        console.error('Error initializing chat:', error);
+        setMessages([{
+          id: '1',
+          type: 'ai',
+          content: "👋 Hello! I'm your AI consultant and I'm thrilled to help you bring your vision to life! Let's dive deeper into your vision - what's the main problem your product solves, and how do you envision it making a difference for your users?",
+          timestamp: new Date()
+        }]);
+      } finally {
+        setIsInitializing(false);
+      }
+    };
+
+    initializeChat();
+  }, []);
 
   const handleSendMessage = async () => {
     if (!inputMessage.trim()) return;
@@ -62,27 +85,30 @@ export default function AIConsultationPage() {
     setInputMessage("");
     setIsTyping(true);
 
-    // Simulate AI response
-    setTimeout(() => {
-      const aiResponses = [
-        "That&apos;s a great insight! I can see how that would be valuable for your target audience. What specific features do you think would be most important for your users?",
-        "Excellent point! Based on what you&apos;ve shared, I&apos;m thinking we should focus on a clean, intuitive interface. What&apos;s your vision for the user experience?",
-        "Perfect! I&apos;m getting a clear picture of your project. Let me ask - what&apos;s your biggest concern about launching this product?",
-        "That makes total sense! I can already see how we can structure this. What would success look like for you in the first month after launch?",
-        "Fantastic! I have everything I need to create your project roadmap. Let me generate a comprehensive plan for your MVP..."
-      ];
+    try {
+      // Convert messages to OpenAI format
+      const chatMessages: ChatMessage[] = messages.map(msg => ({
+        role: msg.type === 'user' ? 'user' : 'assistant',
+        content: msg.content
+      }));
 
-      const randomResponse = aiResponses[Math.floor(Math.random() * aiResponses.length)];
+      // Add current user message
+      chatMessages.push({
+        role: 'user',
+        content: inputMessage
+      });
+
+      // Get AI response
+      const aiResponse = await generateAIResponse(chatMessages);
       
       const aiMessage: Message = {
         id: (Date.now() + 1).toString(),
         type: 'ai',
-        content: randomResponse,
+        content: aiResponse,
         timestamp: new Date()
       };
-
+      
       setMessages(prev => [...prev, aiMessage]);
-      setIsTyping(false);
 
       // Complete consultation after a few exchanges
       if (messages.length >= 4) {
@@ -90,7 +116,18 @@ export default function AIConsultationPage() {
           setConsultationComplete(true);
         }, 2000);
       }
-    }, 1500);
+    } catch (error) {
+      console.error('Error getting AI response:', error);
+      const errorMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        type: 'ai',
+        content: "I apologize, but I encountered a technical issue. Please try again in a moment.",
+        timestamp: new Date()
+      };
+      setMessages(prev => [...prev, errorMessage]);
+    } finally {
+      setIsTyping(false);
+    }
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
