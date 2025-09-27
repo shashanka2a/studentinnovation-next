@@ -5,6 +5,23 @@ const prisma = new PrismaClient()
 async function main() {
   console.log('🌱 Starting database seed...')
 
+  // Create super admin user
+  const superAdmin = await prisma.user.upsert({
+    where: { email: 'admin@gatorinnovation.com' },
+    update: {},
+    create: {
+      id: 'super-admin-1',
+      email: 'admin@gatorinnovation.com',
+      name: 'GatorInnovation Admin',
+      userType: 'STUDENT_ENTREPRENEUR',
+      role: 'SUPER_ADMIN',
+      isActive: true,
+      avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face'
+    }
+  })
+
+  console.log('✅ Created super admin user')
+
   // Create sample users
   const users = await Promise.all([
     prisma.user.upsert({
@@ -15,6 +32,7 @@ async function main() {
         email: 'demo@studentinnovation.com',
         name: 'Alex Johnson',
         userType: 'STUDENT_ENTREPRENEUR',
+        role: 'CLIENT',
         avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face'
       }
     }),
@@ -26,6 +44,7 @@ async function main() {
         email: 'sarah@business.com',
         name: 'Sarah Chen',
         userType: 'BUSINESS_OWNER',
+        role: 'CLIENT',
         avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face'
       }
     })

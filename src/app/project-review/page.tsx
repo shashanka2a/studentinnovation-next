@@ -29,17 +29,33 @@ export default function ProjectReview() {
   const projectData = {
     name: "EcoTrack",
     description: "A mobile app to track carbon footprint and suggest eco-friendly alternatives",
-    category: "Mobile App",
+    category: "Landing Page",
     targetAudience: "Environmentally conscious individuals",
+    heroHeadline: "Track Your Carbon Footprint",
+    heroSubheadline: "Make sustainable choices with our easy-to-use tracking app",
+    primaryCTA: "Get Started",
+    aboutContent: "EcoTrack helps individuals understand and reduce their environmental impact through smart tracking and personalized recommendations.",
     keyFeatures: [
       "Carbon footprint calculator",
-      "Eco-friendly product recommendations",
+      "Eco-friendly product recommendations", 
       "Progress tracking dashboard",
       "Social sharing features"
     ],
-    techStack: ["React Native", "Firebase", "Node.js"],
-    timeline: "2 weeks",
-    budget: "$2,500 - $5,000"
+    brandColors: {
+      primary: "#10B981",
+      secondary: "#059669", 
+      accent: "#F59E0B"
+    },
+    brandVoice: "friendly",
+    layoutStyle: "modern",
+    imageStyle: "photography",
+    domain: "ecotrack.app",
+    hosting: "managed",
+    seo: true,
+    analytics: true,
+    contactEmail: "hello@ecotrack.app",
+    timeline: "2 days",
+    budget: "$500"
   };
 
   const handleConfirm = () => {
@@ -88,9 +104,9 @@ export default function ProjectReview() {
               <CheckCircle className="h-10 w-10 text-white" />
             </div>
           </div>
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Review Your Project</h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">Review Your Landing Page</h1>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Please review your project details below. Once confirmed, we&apos;ll start working on your landing page.
+            Please review your landing page details below. Once confirmed, we&apos;ll start building your professional landing page in 2 days.
           </p>
         </motion.div>
 
@@ -131,6 +147,32 @@ export default function ProjectReview() {
                     <h4 className="font-semibold text-gray-900 mb-2">Budget Range</h4>
                     <p className="text-gray-700 font-medium">{projectData.budget}</p>
                   </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Landing Page Preview */}
+          <Card className="shadow-lg">
+            <CardHeader className="bg-gradient-to-r from-green-50 to-blue-50">
+              <CardTitle className="flex items-center text-xl">
+                <Palette className="h-6 w-6 mr-3 text-green-600" />
+                Landing Page Preview
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="p-6">
+              <div className="bg-gray-50 rounded-lg p-6 border-2 border-dashed border-gray-300">
+                <div className="text-center">
+                  <h2 className="text-2xl font-bold mb-2" style={{ color: projectData.brandColors.primary }}>
+                    {projectData.heroHeadline}
+                  </h2>
+                  <p className="text-gray-600 mb-4">{projectData.heroSubheadline}</p>
+                  <button 
+                    className="px-6 py-2 rounded-lg text-white font-semibold"
+                    style={{ backgroundColor: projectData.brandColors.primary }}
+                  >
+                    {projectData.primaryCTA}
+                  </button>
                 </div>
               </div>
             </CardContent>

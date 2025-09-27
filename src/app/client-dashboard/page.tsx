@@ -64,7 +64,7 @@ interface Project {
   budget: string;
 }
 
-export default function DashboardPage() {
+export default function ClientDashboardPage() {
   const router = useRouter();
   const [projects, setProjects] = useState<Project[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -207,7 +207,7 @@ export default function DashboardPage() {
         {/* Create New Project Button */}
         <div className="mb-8">
           <Button
-            onClick={() => router.push('/dashboard/new')}
+            onClick={() => router.push('/new-project')}
             className="bg-black hover:bg-gray-800 text-white"
           >
             <Plus className="h-4 w-4 mr-2" />
@@ -225,7 +225,7 @@ export default function DashboardPage() {
               <h3 className="text-xl font-semibold text-gray-900 mb-2">No projects yet</h3>
               <p className="text-gray-600 mb-6">Start your first project to get your landing page built in 2 days!</p>
               <Button
-                onClick={() => router.push('/dashboard/new')}
+                onClick={() => router.push('/new-project')}
                 className="bg-black hover:bg-gray-800 text-white"
               >
                 <Plus className="h-4 w-4 mr-2" />

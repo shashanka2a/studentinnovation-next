@@ -112,8 +112,38 @@ export default function Page() {
               Build your MVP fast
             </h1>
             <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-              Websites, mobile apps, and brands for student entrepreneurs and business owners. Simple scope, quick delivery, great UX.
+              Professional landing pages in 2 days or full applications in 1 week. Simple scope, quick delivery, great UX.
             </p>
+            
+            {/* Project Type Selection */}
+            <div className="mb-8 max-w-4xl mx-auto">
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card className="hover:shadow-lg transition-shadow cursor-pointer border-2 hover:border-blue-200">
+                  <CardContent className="p-6 text-center">
+                    <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span className="text-2xl">🚀</span>
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">Landing Page</h3>
+                    <p className="text-gray-600 mb-4">Perfect for launching your idea quickly</p>
+                    <div className="text-2xl font-bold text-blue-600 mb-2">$500</div>
+                    <div className="text-sm text-gray-500">Ready in 2 days</div>
+                  </CardContent>
+                </Card>
+                
+                <Card className="hover:shadow-lg transition-shadow cursor-pointer border-2 hover:border-purple-200">
+                  <CardContent className="p-6 text-center">
+                    <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span className="text-2xl">💻</span>
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">Full Application</h3>
+                    <p className="text-gray-600 mb-4">Complete web or mobile app</p>
+                    <div className="text-2xl font-bold text-purple-600 mb-2">$2,500</div>
+                    <div className="text-sm text-gray-500">Ready in 1 week</div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+            
             <Button 
               size="lg" 
               className="bg-black hover:bg-gray-800 text-white px-8 py-3 text-lg transition-all duration-300" 

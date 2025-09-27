@@ -237,7 +237,7 @@ export default function PaymentPage() {
                     ) : (
                       <>
                         <Lock className="h-4 w-4 mr-2" />
-                        Pay $2,500
+                        Pay $500
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </>
                     )}
@@ -259,38 +259,38 @@ export default function PaymentPage() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Full MVP Package</span>
-                  <span className="font-semibold">$2,500</span>
+                  <span className="text-gray-600">Professional Landing Page</span>
+                  <span className="font-semibold">$500</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Development (1 week)</span>
-                  <span className="font-semibold">$2,000</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Design & Planning</span>
+                  <span className="text-gray-600">Custom Design & Development</span>
                   <span className="font-semibold">$300</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Testing & QA</span>
-                  <span className="font-semibold">$200</span>
+                  <span className="text-gray-600">SEO & Analytics Setup</span>
+                  <span className="font-semibold">$100</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Domain & Hosting (1 year)</span>
+                  <span className="font-semibold">$100</span>
                 </div>
                 <div className="border-t pt-4">
                   <div className="flex justify-between text-lg font-bold">
                     <span>Total</span>
-                    <span>$2,500</span>
+                    <span>$500</span>
                   </div>
                 </div>
 
                 <div className="bg-green-50 p-4 rounded-lg">
                   <h4 className="font-semibold text-green-800 mb-2">What&apos;s Included:</h4>
                   <ul className="text-sm text-green-700 space-y-1">
-                    <li>• Complete web application</li>
-                    <li>• User authentication system</li>
-                    <li>• Database integration</li>
-                    <li>• Payment processing</li>
-                    <li>• Mobile responsive design</li>
-                    <li>• 1 week delivery</li>
-                    <li>• Unlimited revisions</li>
+                    <li>• Professional landing page design</li>
+                    <li>• Mobile responsive layout</li>
+                    <li>• SEO optimization</li>
+                    <li>• Analytics setup</li>
+                    <li>• Contact form integration</li>
+                    <li>• 2-day delivery</li>
+                    <li>• 1 free revision</li>
                   </ul>
                 </div>
 

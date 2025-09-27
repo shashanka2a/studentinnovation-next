@@ -16,6 +16,8 @@ model User {
   name          String?
   avatar        String?
   userType      UserType  @default(STUDENT_ENTREPRENEUR)
+  role          UserRole  @default(CLIENT)
+  isActive      Boolean   @default(true)
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
   
@@ -33,12 +35,51 @@ model Project {
   description     String?
   website         String?
   logo            String?
-  category        ProjectCategory @default(WEB_APP)
+  category        ProjectCategory @default(LANDING_PAGE)
   status          ProjectStatus  @default(DRAFT)
   timeline        String?
   budget          String?
   targetAudience  String?
   features        String[]       @default([])
+  
+  // Landing Page Specific Fields
+  projectType     String        @default("landing-page") // landing-page or full-app
+  heroHeadline    String?
+  heroSubheadline String?
+  heroImage       String?
+  primaryCTA      String?
+  secondaryCTA    String?
+  aboutContent    String?
+  benefits        String[]      @default([])
+  testimonials    String[]      @default([])
+  teamInfo        String?
+  contactEmail    String?
+  contactPhone    String?
+  
+  // Social Links
+  socialTwitter   String?
+  socialLinkedin  String?
+  socialInstagram String?
+  socialFacebook  String?
+  
+  // Design Preferences
+  brandPrimaryColor   String? @default("#3B82F6")
+  brandSecondaryColor String? @default("#1E40AF")
+  brandAccentColor    String? @default("#F59E0B")
+  brandVoice          String? @default("professional")
+  layoutStyle         String? @default("modern")
+  imageStyle          String? @default("photography")
+  
+  // Technical Requirements
+  domain          String?
+  hosting         String? @default("managed")
+  seoEnabled      Boolean @default(true)
+  analyticsEnabled Boolean @default(true)
+  
+  // Admin Fields
+  landingPageUrl  String?
+  screenshots     String[] @default([])
+  adminNotes      String?
   
   // Timestamps
   createdAt       DateTime      @default(now())
@@ -123,6 +164,12 @@ enum UserType {
   STUDENT_ENTREPRENEUR
   BUSINESS_OWNER
   STARTUP_FOUNDER
+}
+
+enum UserRole {
+  CLIENT
+  ADMIN
+  SUPER_ADMIN
 }
 
 enum ProjectCategory {

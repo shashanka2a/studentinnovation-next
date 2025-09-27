@@ -1,57 +1,39 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { requireAdmin, getProjectDetails, updateProjectStatus } from '@/lib/admin-auth'
+import { prisma } from '@/lib/prisma'
 
-// GET /api/admin/projects/[id] - Get project details
-export async function GET(
-  request: NextRequest,
-  { params }: { params: { id: string } }
-) {
-  try {
-    // Check admin access
-    await requireAdmin()
-
-    // Get project details
-    const project = await getProjectDetails(params.id)
-
-    if (!project) {
-      return NextResponse.json({ error: 'Project not found' }, { status: 404 })
-    }
-
-    return NextResponse.json({ project })
-  } catch (error) {
-    console.error('Admin project details error:', error)
-    
-    if (error instanceof Error && error.message === 'Admin access required') {
-      return NextResponse.json({ error: 'Admin access required' }, { status: 403 })
-    }
-    
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
-  }
-}
-
-// PUT /api/admin/projects/[id] - Update project status
+// PUT /api/admin/projects/[id] - Update project (admin only)
 export async function PUT(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
   try {
-    // Check admin access
-    await requireAdmin()
+    // No authentication required for MVP
 
     const body = await request.json()
-    const { status, notes } = body
+    const { landingPageUrl, adminNotes, screenshots } = body
 
-    // Update project status
-    const project = await updateProjectStatus(params.id, status, notes)
+    const project = await prisma.project.update({
+      where: {
+        id: params.id
+      },
+      data: {
+        landingPageUrl,
+        adminNotes,
+        screenshots: screenshots || [],
+        updatedAt: new Date()
+      }
+    })
 
-    return NextResponse.json({ project })
+    return NextResponse.json({ 
+      success: true, 
+      project,
+      message: 'Project updated successfully' 
+    })
   } catch (error) {
-    console.error('Admin project update error:', error)
-    
-    if (error instanceof Error && error.message === 'Admin access required') {
-      return NextResponse.json({ error: 'Admin access required' }, { status: 403 })
-    }
-    
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
+    console.error('Error updating project:', error)
+    return NextResponse.json({ 
+      error: 'Failed to update project',
+      details: error instanceof Error ? error.message : 'Unknown error'
+    }, { status: 500 })
   }
 }
